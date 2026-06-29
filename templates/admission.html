@@ -1,0 +1,574 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Admission
+{% endblock %}
+
+{% block content %}
+
+<!-- ================= ADMISSION HERO ================= -->
+
+<section class="admission-hero">
+
+    <div class="container">
+
+        <div class="admission-wrapper">
+
+            <!-- LEFT -->
+
+            <div class="admission-left">
+
+                <span class="section-tag">
+
+                    ADMISSION OPEN 2026
+
+                </span>
+
+                <h1>
+
+                    Start Your
+                    <span>Learning Journey</span>
+
+                </h1>
+
+                <p>
+
+                    Join Devexify Solutions and build future-ready
+                    digital skills through live classes, practical
+                    projects and expert mentors.
+
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#admission-form"
+                       class="btn btn-primary">
+
+                        Apply Now
+
+                    </a>
+
+                    <a href="#payment-info"
+                       class="btn btn-outline-primary">
+
+                        Payment Details
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- RIGHT -->
+
+            <div class="admission-right">
+
+                <div class="hero-blob"></div>
+
+                <img src="{% static 'images/admission.png' %}"
+                     alt="Admission">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= ADMISSION FORM ================= -->
+
+<section class="admission-section"
+         id="admission-form">
+
+<div class="container">
+
+<div class="section-heading">
+
+<span class="section-tag">
+
+ONLINE REGISTRATION
+
+</span>
+
+<h2>
+
+Admission
+<span>Application Form</span>
+
+</h2>
+
+<p>
+
+Complete the form below to secure
+your seat in your selected course.
+
+</p>
+
+</div>
+
+<form method="POST"
+      enctype="multipart/form-data"
+      class="admission-form">
+
+{% if messages %}
+
+    {% for message in messages %}
+
+        <div class="alert alert-success mt-4">
+
+            {{ message }}
+
+        </div>
+
+    {% endfor %}
+
+{% endif %}
+
+
+{% csrf_token %}
+<!-- ================= PERSONAL INFORMATION ================= -->
+
+<div class="form-title">
+
+    <h3>Personal Information</h3>
+
+</div>
+
+<div class="form-grid">
+
+    <div class="form-group">
+
+        <label>Full Name *</label>
+
+        <input type="text"
+               name="full_name"
+               class="form-control"
+               placeholder="Enter your full name"
+               required>
+
+    </div>
+
+    <div class="form-group">
+
+        <label>Father's Name *</label>
+
+        <input type="text"
+               name="father_name"
+               class="form-control"
+               placeholder="Enter father's name"
+               required>
+
+    </div>
+
+    <div class="form-group">
+
+        <label>Email Address *</label>
+
+        <input type="email"
+               name="email"
+               class="form-control"
+               placeholder="example@gmail.com"
+               required>
+
+    </div>
+
+    <div class="form-group">
+
+        <label>Phone Number *</label>
+
+        <input type="tel"
+               name="phone"
+               class="form-control"
+               placeholder="03XXXXXXXXX"
+               required>
+
+    </div>
+
+    <div class="form-group">
+
+        <label>WhatsApp Number *</label>
+
+        <input type="tel"
+               name="whatsapp"
+               class="form-control"
+               placeholder="03XXXXXXXXX"
+               required>
+
+    </div>
+
+    <div class="form-group">
+
+        <label>City *</label>
+
+        <input type="text"
+               name="city"
+               class="form-control"
+               placeholder="Enter your city"
+               required>
+
+    </div>
+
+</div>
+
+
+<!-- ================= COURSE INFORMATION ================= -->
+
+<div class="form-title mt-5">
+
+    <h3>Course Information</h3>
+
+</div>
+
+<div class="form-grid">
+
+    <div class="form-group">
+
+        <label>Select Course *</label>
+
+        <select name="course"
+                class="form-control"
+                required>
+
+            <option value="">Choose Course</option>
+
+            <option value="Python Development"
+{% if selected_course == "Python Development" %}
+selected
+{% endif %}>
+Python Development
+</option>
+
+            <option value="Artificial Intelligence"
+{% if selected_course == "Artificial Intelligence" %}
+selected
+{% endif %}>
+Artificial Intelligence
+</option>
+
+            <option value="WEB Development"
+{% if selected_course == "WEB Development" %}
+selected
+{% endif %}>
+WEB Development
+</option>
+
+            
+            <option value="Graphic Designing"
+{% if selected_course == "Graphic Designing" %}
+selected
+{% endif %}>
+Graphic Designing
+</option>
+
+           
+            <option value="Social Media Marketing"
+{% if selected_course == "Social Media Marketing" %}
+selected
+{% endif %}>
+Social Media Marketing
+</option>
+
+            
+            <option value="Scientific Writing"
+{% if selected_course == "Scientific Writing" %}
+selected
+{% endif %}>
+Scientific Writing
+</option>
+
+        </select>
+
+    </div>
+
+    <div class="form-group">
+
+        <label>Registration Type *</label>
+
+        <select name="registration_type"
+                class="form-control"
+                required>
+
+            <option value="">Select Type</option>
+
+            <option value="Course Admission"
+{% if registration_type == "Course Admission" %}
+selected
+{% endif %}>
+Course Admission
+</option>
+
+            <option value="Free Demo Class"
+{% if registration_type == "Free Demo Class" %}
+selected
+{% endif %}>
+Free Demo Class
+</option>
+
+        </select>
+
+    </div>
+
+</div>
+
+
+<!-- ================= PAYMENT INFORMATION ================= -->
+
+<div class="form-title mt-5">
+
+    <h3>Payment Information</h3>
+
+</div>
+
+<div class="form-grid">
+
+    <div class="form-group">
+
+        <label>Payment Method *</label>
+
+        <select name="payment_method"
+                class="form-control"
+                required>
+
+            <option value="">Choose Payment Method</option>
+
+            <option>Easypaisa</option>
+
+            <option>JazzCash</option>
+
+            <option>Bank Transfer</option>
+
+        </select>
+
+    </div>
+
+    <div class="form-group">
+
+        <label>Upload Payment Screenshot *</label>
+
+        <input type="file"
+               name="payment_screenshot"
+               class="form-control"
+               accept=".jpg,.jpeg,.png,.pdf"
+               required>
+
+    </div>
+
+</div>
+
+
+<!-- ================= MESSAGE ================= -->
+
+<div class="form-group mt-4">
+
+    <label>Additional Message</label>
+
+    <textarea name="message"
+              rows="5"
+              class="form-control"
+              placeholder="Write your message here..."></textarea>
+
+</div>
+
+
+<div class="form-check mt-4">
+
+    <input class="form-check-input"
+           type="checkbox"
+           id="confirm"
+           required>
+
+    <label class="form-check-label"
+           for="confirm">
+
+        I confirm that all the information provided is correct and the payment has been completed.
+
+    </label>
+
+</div>
+
+
+<div class="text-center mt-5">
+
+    <button type="submit"
+            class="btn btn-primary btn-lg px-5">
+
+        Submit Admission
+
+    </button>
+
+</div>
+
+</form>
+
+</div>
+
+</section><!-- ================= PAYMENT DETAILS ================= -->
+
+<section class="payment-section" id="payment-info">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="section-tag">
+
+                PAYMENT DETAILS
+
+            </span>
+
+            <h2>
+
+                Complete Your
+                <span>Course Fee</span>
+
+            </h2>
+
+            <p>
+
+                After making the payment, upload the payment screenshot
+                in the admission form above.
+
+            </p>
+
+        </div>
+
+        <div class="payment-grid">
+
+            <!-- Easypaisa -->
+
+            <div class="payment-card">
+
+                <h3>💚 Easypaisa</h3>
+
+                <h4>0340-8300327</h4>
+
+                <p>
+                    Account Title:<br>
+                    Muhammad Ammar
+                </p>
+
+            </div>
+
+            <!-- JazzCash -->
+
+            <div class="payment-card">
+
+                <h3>❤️ JazzCash</h3>
+
+                <h4>0326-0995953</h4>
+
+                <p>
+                    Account Title:<br>
+                    Muhammad Ammar
+                </p>
+
+            </div>
+
+            <!-- Bank -->
+
+            <div class="payment-card">
+
+                <h3>🏦 Bank Transfer</h3>
+
+                <h4>HBL</h4>
+
+                <p>
+
+                    Account Title:<br>
+                    Muhammad Ammar
+
+                    <br><br>
+
+                    ACC No:
+                    0324 357844678
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= NEED HELP ================= -->
+
+<section class="help-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="section-tag">
+
+                NEED HELP?
+
+            </span>
+
+            <h2>
+
+                Contact
+                <span>Our Team</span>
+
+            </h2>
+
+        </div>
+
+        <div class="help-grid">
+
+            <div class="help-card">
+
+                <i class="fa-brands fa-whatsapp"></i>
+
+                <h4>WhatsApp</h4>
+
+                <p>
+
+                    +92 326 0995953
+
+                </p>
+
+            </div>
+
+            <div class="help-card">
+
+                <i class="fa-solid fa-envelope"></i>
+
+                <h4>Email</h4>
+
+                <p>
+
+                    devexifysolutions@gmail.com
+
+                </p>
+
+            </div>
+
+            <div class="help-card">
+
+                <i class="fa-solid fa-phone"></i>
+
+                <h4>Phone</h4>
+
+                <p>
+
+                    +92 326 0995953
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

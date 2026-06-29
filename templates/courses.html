@@ -1,0 +1,505 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Courses
+{% endblock %}
+
+{% block content %}
+
+<!-- ================= COURSES HERO ================= -->
+
+<section class="courses-hero">
+
+    <div class="container">
+
+        <div class="courses-hero-wrapper">
+
+            <!-- Left -->
+
+            <div class="courses-left">
+
+                <span class="section-tag">
+                    OUR COURSES
+                </span>
+
+                <h1>
+                    Learn <span>Future Ready</span>
+                    Digital Skills
+                </h1>
+
+                <p>
+
+                    Learn practical, career-focused digital skills through
+                    live online classes, expert trainers and real-world
+                    projects.
+
+                </p>
+
+                <div class="courses-buttons">
+
+                    <a href="/admission" class="btn btn-primary">
+                        Enroll Now
+                    </a>
+
+                    <a href="#popular-courses"
+                       class="btn btn-outline-primary">
+
+                        Explore Courses
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- Right -->
+
+            <div class="courses-right">
+
+                <img src="{% static 'images/hero.png' %}"
+                     alt="Courses">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= POPULAR COURSES ================= -->
+
+<section class="popular-courses"
+         id="popular-courses">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="section-tag">
+
+                POPULAR COURSES
+
+            </span>
+
+            <h2>
+
+                Choose Your
+                <span>Career Path</span>
+
+            </h2>
+
+            <p>
+
+                Choose a professional course and
+                start your journey today.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="courses-grid">
+                <!-- ================= PYTHON ================= -->
+
+            <div class="course-card">
+
+                <div class="course-image">
+
+                    <img src="{% static 'images/python.png' %}"
+                         alt="Python Development">
+
+                </div>
+
+                <div class="course-info">
+
+                    <span class="course-category">
+                        Programming
+                    </span>
+
+                    <h3>
+                        Python Development
+                    </h3>
+
+                    <p>
+
+                        Learn Python from beginner to advanced including
+                        OOP, File Handling, APIs and real-world projects.
+
+                    </p>
+
+                    <div class="course-details">
+
+                        <span>⭐ 4.9 Rating</span>
+
+                        <span>⏳ 2 Months</span>
+
+                    </div>
+
+                    <h4>
+
+                        PKR 2000
+                        <small>/ Month</small>
+
+                    </h4>
+
+                    <a href="{% url 'admission' %}?course=Python Development"
+   class="btn btn-primary">
+
+    Enroll Now
+
+</a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= AI ================= -->
+
+            <div class="course-card">
+
+                <div class="course-image">
+
+                    <img src="{% static 'images/ai.png' %}"
+                         alt="Artificial Intelligence">
+
+                </div>
+
+                <div class="course-info">
+
+                    <span class="course-category">
+                        Artificial Intelligence
+                    </span>
+
+                    <h3>
+                        Artificial Intelligence
+                    </h3>
+
+                    <p>
+
+                        Master AI tools, Prompt Engineering, ChatGPT,
+                        AI Automation, AI Agents and Image Generation.
+
+                    </p>
+
+                    <div class="course-details">
+
+                        <span>⭐ 4.9 Rating</span>
+
+                        <span>⏳ 2 Months</span>
+
+                    </div>
+
+                    <h4>
+
+                        PKR 2000
+                        <small>/ Month</small>
+
+                    </h4>
+
+                    <a href="{% url 'admission' %}?course=Artificial Intelligence"
+   class="btn btn-primary">
+
+    Enroll Now
+
+</a>
+
+                </div>
+
+            </div>            <!-- ================= WEB DEVELOPMENT ================= -->
+
+            <div class="course-card">
+
+                <div class="course-image">
+
+                    <img src="{% static 'images/web.png' %}"
+                         alt="Web Development">
+
+                </div>
+
+                <div class="course-info">
+
+                    <span class="course-category">
+                        Development
+                    </span>
+
+                    <h3>
+                        Web Development
+                    </h3>
+
+                    <p>
+
+                        Learn HTML, CSS, Bootstrap, WordPress,
+                        Shopify and Django to build modern,
+                        responsive websites.
+
+                    </p>
+
+                    <div class="course-details">
+
+                        <span>⭐ 4.9 Rating</span>
+
+                        <span>⏳ 2 Months</span>
+
+                    </div>
+
+                    <h4>
+
+                        PKR 2000
+                        <small>/ Month</small>
+
+                    </h4>
+
+                    <a href="{% url 'admission' %}?course=Web Development"
+   class="btn btn-primary">
+
+    Enroll Now
+
+</a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= GRAPHIC DESIGNING ================= -->
+
+            <div class="course-card">
+
+                <div class="course-image">
+
+                    <img src="{% static 'images/graphic.png' %}"
+                         alt="Graphic Designing">
+
+                </div>
+
+                <div class="course-info">
+
+                    <span class="course-category">
+                        Design
+                    </span>
+
+                    <h3>
+                        Graphic Designing
+                    </h3>
+
+                    <p>
+
+                        Master Canva, Adobe Photoshop and
+                        Illustrator to create branding,
+                        posters and social media designs.
+
+                    </p>
+
+                    <div class="course-details">
+
+                        <span>⭐ 4.9 Rating</span>
+
+                        <span>⏳ 2 Months</span>
+
+                    </div>
+
+                    <h4>
+
+                        PKR 2000
+                        <small>/ Month</small>
+
+                    </h4>
+
+                    <a href="{% url 'admission' %}?course=Graphic Designing"
+   class="btn btn-primary">
+
+    Enroll Now
+
+</a>
+
+                </div>
+
+            </div>
+        <!-- ================= SOCIAL MEDIA MARKETING ================= -->
+
+        <div class="course-card">
+
+            <div class="course-image">
+
+                <img src="{% static 'images/social.png' %}"
+                     alt="Social Media Marketing">
+
+            </div>
+
+            <div class="course-info">
+
+                <span class="course-category">
+
+                    Marketing
+
+                </span>
+
+                <h3>
+
+                    Social Media Marketing
+
+                </h3>
+
+                <p>
+
+                    Learn Facebook Marketing, Instagram Growth,
+                    Meta Ads, Content Strategy, Branding,
+                    Reels Marketing and Business Promotion.
+
+                </p>
+
+                <div class="course-details">
+
+                    <span>⭐ 4.9 Rating</span>
+
+                    <span>⏳ 2 Months</span>
+
+                </div>
+
+                <h4>
+
+                    PKR 2000
+                    <small>/ Month</small>
+
+                </h4>
+
+                <a href="{% url 'admission' %}?course=Social Media Marketing"
+   class="btn btn-primary">
+
+    Enroll Now
+
+</a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= SCIENTIFIC WRITING ================= -->
+
+        <div class="course-card">
+
+            <div class="course-image">
+
+                <img src="{% static 'images/scientific.png' %}"
+                     alt="Scientific Writing">
+
+            </div>
+
+            <div class="course-info">
+
+                <span class="course-category">
+
+                    Research
+
+                </span>
+
+                <h3>
+
+                    Scientific Writing
+
+                </h3>
+
+                <p>
+
+                    Learn academic writing, research methodology,
+                    referencing, literature review and
+                    publication techniques.
+
+                </p>
+
+                <div class="course-details">
+
+                    <span>⭐ 4.9 Rating</span>
+
+                    <span>⏳ 2 Months</span>
+
+                </div>
+
+                <h4>
+
+                    PKR 2000
+                    <small>/ Month</small>
+
+                </h4>
+
+                <a href="{% url 'admission' %}?course=Scientific Writing"
+   class="btn btn-primary">
+
+    Enroll Now
+
+</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= CALL TO ACTION ================= -->
+
+<section class="courses-cta">
+
+    <div class="container">
+
+        <div class="cta-content">
+
+            <span class="section-tag">
+
+                START YOUR JOURNEY
+
+            </span>
+
+            <h2>
+
+                Build Your Future With
+                <span>Devexify Solutions</span>
+
+            </h2>
+
+            <p>
+
+                Join hundreds of students learning future-ready skills through
+                live online classes, practical projects and expert mentors.
+
+            </p>
+
+            <div class="cta-buttons">
+
+                <a href="/admission" class="btn btn-primary">
+
+                    Apply Now
+
+                </a>
+
+                <a href="/admission" class="btn btn-outline-primary">
+
+                    Book Free Demo
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
+```

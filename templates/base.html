@@ -1,0 +1,160 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %} | Devexify Solutions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<!-- Custom CSS -->
+<!-- Custom CSS -->
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+
+<link rel="stylesheet" href="{% static 'css/courses.css' %}">
+
+<link rel="stylesheet" href="{% static 'css/admission.css' %}">
+<link rel="stylesheet" href="{% static 'css/team.css' %}">
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+    <img src="{% static 'images/devlogo.png' %}" alt="Devexify Logo" height="55">
+</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}"
+   href="{% url 'home' %}">
+
+    Home
+
+</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.url_name == 'courses' %}active{% endif %}"
+   href="{% url 'courses' %}">
+
+    Courses
+
+</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/team">Team</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.url_name == 'admission' %}active{% endif %}"
+   href="{% url 'admission' %}">
+
+    Admission
+
+</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}"
+   href="{% url 'about' %}">
+
+    About
+
+</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact Us</a>
+        </li>
+      </ul>
+      <a href="{% url 'admission' %}?type=Free Demo Class"
+   class="btn btn-primary">
+   <!-- NAVBAR MEN YEH ADD KARO (Free Demo button se pehle) -->
+<a href="{% url 'student_login' %}" class="btn btn-outline-primary me-2">
+    <i class="fa-solid fa-graduation-cap me-1"></i> Student Portal
+</a>
+
+    Free Demo
+
+</a>
+    </div>
+  </div>
+</nav>
+<main>
+
+    {% block content %}
+
+    {% endblock %}
+
+</main>
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="{% static 'images/devlogo.png' %}" alt="Devexify" height="55">
+                <p>Empowering students with modern digital skills through practical, expert-led online education.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://wa.me/923260995953" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h5>Quick Links</h5>
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'courses' %}">Courses</a></li>
+                    <li><a href="{% url 'about' %}">About Us</a></li>
+                    <li><a href="{% url 'team' %}">Our Team</a></li>
+                    <li><a href="{% url 'admission' %}">Admission</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h5>Courses</h5>
+                <ul>
+                    <li><a href="{% url 'courses' %}">Python Development</a></li>
+                    <li><a href="{% url 'courses' %}">Artificial Intelligence</a></li>
+                    <li><a href="{% url 'courses' %}">Web Development</a></li>
+                    <li><a href="{% url 'courses' %}">Graphic Designing</a></li>
+                    <li><a href="{% url 'courses' %}">Social Media Marketing</a></li>
+                    <li><a href="{% url 'courses' %}">Scientific Writing</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h5>Contact Us</h5>
+                <p><i class="fa-solid fa-phone"></i> +92 326 0995953</p>
+                <p><i class="fab fa-whatsapp"></i> +92 326 0995953</p>
+                <p><i class="fa-solid fa-envelope"></i> devexifysolutions@gmail.com</p>
+                <p><i class="fa-solid fa-location-dot"></i> Pakistan</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Devexify Solutions. All Rights Reserved.</p>
+            <a href="{% url 'student_login' %}" class="portal-link">
+                <i class="fa-solid fa-graduation-cap"></i> Student Portal
+            </a>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

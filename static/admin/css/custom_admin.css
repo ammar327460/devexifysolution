@@ -1,0 +1,211 @@
+/*==================================
+        DEVEXIFY ADMIN
+==================================*/
+
+:root{
+
+    --primary:#2563eb;
+    --light:#ffffff;
+    --bg:#f6f8fc;
+
+}
+
+/* Header */
+
+#header{
+
+    background:#ffffff !important;
+
+    border-bottom:1px solid #e5e7eb;
+
+}
+
+#branding h1{
+
+    margin:0;
+
+}
+
+#branding h1 img{
+
+    height:50px;
+
+}
+
+/* Breadcrumb */
+
+.breadcrumbs{
+
+    background:#f8fbff !important;
+
+    color:#2563eb !important;
+
+}
+
+/* Sidebar */
+
+#nav-sidebar{
+
+    background:#ffffff !important;
+
+}
+
+/* Modules */
+
+.module{
+
+    border-radius:14px;
+
+    overflow:hidden;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.06);
+
+    border:none;
+
+}
+
+.module h2{
+
+    background:#2563eb !important;
+
+    color:#fff !important;
+
+    padding:14px 18px;
+
+}
+
+/* Buttons */
+
+.button,
+input[type=submit],
+input[type=button],
+.default{
+
+    background:#2563eb !important;
+
+    border:none !important;
+
+    border-radius:8px !important;
+
+}
+
+.button:hover,
+.default:hover{
+
+    background:#1d4ed8 !important;
+
+}
+
+/* Links */
+
+a{
+
+    color:#2563eb;
+
+}
+
+a:hover{
+
+    color:#1d4ed8;
+
+}
+
+/* Body */
+
+body{
+
+    background:#f5f7fb;
+
+}
+
+/* Login */
+
+.login{
+
+    background:#f5f7fb;
+
+}
+
+.login #container{
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.12);
+
+}
+
+.login #header{
+
+    background:#ffffff !important;
+
+}
+
+.login .submit-row input{
+
+    width:100%;
+
+    height:48px;
+
+    border-radius:10px;
+
+}
+
+/* Tables */
+
+#changelist table{
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+}
+
+/* Dashboard */
+
+.dashboard .module{
+
+    margin-bottom:25px;
+
+}/*==================================
+/* ==========================
+   TOP RIGHT USER MENU
+========================== */
+
+#user-tools{
+
+    color:#111827 !important;
+    font-size:13px;
+    font-weight:600;
+
+}
+
+#user-tools,
+#user-tools *{
+
+    color:#111827 !important;
+
+}
+
+#user-tools a{
+
+    color:#2563eb !important;
+    text-decoration:none;
+
+}
+
+#user-tools a:hover{
+
+    color:#1d4ed8 !important;
+    text-decoration:underline;
+
+}
+
+.theme-toggle{
+
+    background:#f3f4f6 !important;
+    color:#2563eb !important;
+    border-radius:8px;
+
+}

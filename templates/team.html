@@ -1,0 +1,291 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Team
+{% endblock %}
+
+{% block content %}
+
+<section class="team-section">
+
+    <div class="container">
+
+        <div class="section-heading text-center">
+
+            <span class="section-tag">
+                OUR TEAM
+            </span>
+
+            <h2>
+                Meet Our <span>Expert Trainers</span>
+            </h2>
+
+            <p>
+                Learn from experienced professionals dedicated to helping
+                students build practical skills and achieve career success.
+            </p>
+
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            <div class="col-lg-4 col-md-6">
+
+<div class="team-card featured">
+
+<img src="{% static 'images/ammar.png' %}" alt="Muhammad Ammar">
+
+<div class="team-content">
+
+<h3>Muhammad Ammar</h3>
+
+<span>
+Founder & Director <br>
+Graphic Designing & AI Trainer
+</span>
+
+<p>
+
+Founder of Devexify Solutions specializing in
+Graphic Designing, Canva, Photoshop, Branding,
+AI Tools and Prompt Engineering.
+
+</p>
+
+<div class="team-social">
+
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+
+<a href="#"><i class="fab fa-linkedin-in"></i></a>
+
+<a href="#"><i class="fab fa-instagram"></i></a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="col-lg-4 col-md-6">
+
+    <div class="team-card">
+
+        <img src="{% static 'images/saad.png' %}" alt="Saad Nauman">
+
+        <div class="team-content">
+
+            <h3>Saad Nauman</h3>
+
+            <span>
+                Scientific Writing Trainer
+            </span>
+
+            <p>
+
+                Scientific Writing & Research Expert with experience in
+                research papers, literature reviews, academic publications
+                and international research documentation.
+
+            </p>
+
+            <div class="team-social">
+
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+
+                <a href="#"><i class="fab fa-instagram"></i></a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<div class="col-lg-4 col-md-6">
+
+    <div class="team-card">
+
+        <img src="{% static 'images/haziq.png' %}" alt="Haziq Tahir">
+
+        <div class="team-content">
+
+            <h3>Haziq Tahir</h3>
+
+            <span>
+                Social Media Marketing Trainer
+            </span>
+
+            <p>
+
+                Digital Marketing & Social Media Expert specializing in
+                Meta Ads, Facebook Marketing, Instagram Growth,
+                branding, content strategy and business promotion.
+
+            </p>
+
+            <div class="team-social">
+
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+
+                <a href="#"><i class="fab fa-instagram"></i></a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<div class="col-lg-4 col-md-6">
+
+    <div class="team-card">
+
+        <img src="{% static 'images/huzaifah.png' %}" alt="Huzaifah Ansari">
+
+        <div class="team-content">
+
+            <h3>Huzaifah Ansari</h3>
+
+            <span>
+                Python Development Trainer
+            </span>
+
+            <p>
+
+                Python & Django Developer with expertise in backend
+                development, REST APIs, databases and building
+                real-world web applications.
+
+            </p>
+
+            <div class="team-social">
+
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+
+                <a href="#"><i class="fab fa-instagram"></i></a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<div class="col-lg-4 col-md-6">
+
+    <div class="team-card">
+
+        <img src="{% static 'images/ahmed.png' %}"
+             alt="Ahmed Saleem">
+
+        <div class="team-content">
+
+            <h3>
+
+                Ahmed Saleem
+
+            </h3>
+
+            <span>
+
+                Web Development & AI Trainer
+
+            </span>
+
+            <p>
+
+                Full Stack Web Developer and AI Trainer with expertise
+                in HTML, CSS, JavaScript, Django, WordPress and modern
+                AI tools for practical software development.
+
+            </p>
+
+            <div class="team-social">
+
+                <a href="#">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= TEAM CTA ================= -->
+
+<section class="team-cta">
+
+    <div class="container">
+
+        <div class="cta-box">
+
+            <span class="section-tag">
+
+                JOIN DEVEXIFY
+
+            </span>
+
+            <h2>
+
+                Learn From Industry Experts
+
+            </h2>
+
+            <p>
+
+                Our experienced trainers are committed to helping you
+                build practical skills, complete real-world projects
+                and prepare for a successful career.
+
+            </p>
+
+            <div class="cta-buttons">
+
+                <a href="{% url 'courses' %}"
+                   class="btn btn-light">
+
+                    Explore Courses
+
+                </a>
+
+                <a href="{% url 'admission' %}"
+                   class="btn btn-primary">
+
+                    Apply Now
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

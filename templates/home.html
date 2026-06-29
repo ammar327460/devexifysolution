@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+
+    <div class="container">
+
+        <div class="hero-wrapper">
+
+            <!-- LEFT SIDE -->
+
+            <div class="hero-content">
+
+                <div class="hero-badge">
+                    🚀 Admissions Open 2026
+                </div>
+
+                <h1>
+                    Empowering Skills,
+                    <span>Building Futures.</span>
+                </h1>
+
+                <p>
+                    Learn today's most in-demand digital skills through
+                    practical learning, expert instructors and real-world
+                    projects. Build your future with Devexify Solutions.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="{% url 'admission' %}"
+   class="btn btn-primary">
+
+    Apply Now
+
+</a>
+
+                    <a href="{% url 'admission' %}?type=Free Demo Class"
+   class="btn btn-outline-primary">
+
+    Free Demo
+
+</a>
+                </div>
+
+                <!-- COURSE CARDS -->
+
+                
+
+            </div>
+
+            <!-- RIGHT SIDE -->
+
+            <div class="hero-image-area">
+
+                <div class="hero-blob"></div>
+
+                <img src="{% static 'images/hero.png' %}"
+                     alt="Student"
+                     class="hero-image">
+
+                <!-- IMAGE KE NEECHE -->
+
+                <div class="hero-image-info">
+
+                    <div class="floating-card students-card">
+
+                        ⭐ 50+ Students
+
+                    </div>
+
+                    <div class="hero-bottom-cards">
+
+                        <div class="floating-card">
+
+                            💼 Practical Learning
+
+                        </div>
+
+                        <div class="floating-card">
+
+                            🎓 Professional Courses
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+<div class="course-grid">
+
+                    <div class="course-card">
+                        <i class="fa-brands fa-python"></i>
+                        <div>
+                            <h5>Python</h5>
+                            <small>Development</small>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <i class="fa-solid fa-robot"></i>
+                        <div>
+                            <h5>AI</h5>
+                            <small>Artificial Intelligence</small>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <i class="fa-solid fa-share-nodes"></i>
+                        <div>
+                            <h5>Social Media</h5>
+                            <small>Marketing</small>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <i class="fa-solid fa-code"></i>
+                        <div>
+                            <h5>Web Development</h5>
+                            <small>HTML • CSS • Django</small>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <i class="fa-solid fa-pen-ruler"></i>
+                        <div>
+                            <h5>Graphic Designing</h5>
+                            <small>Adobe • Canva</small>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <i class="fa-solid fa-book-open"></i>
+                        <div>
+                            <h5>Scientific Writing</h5>
+                            <small>Research Skills</small>
+                        </div>
+                    </div>
+
+                </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =================== STATS =================== -->
+
+<section class="hero-stats">
+
+    <div class="container">
+
+        <div class="stats-wrapper">
+
+            <div class="stat-box">
+                <h2>50+</h2>
+                <p>Students</p>
+            </div>
+
+            <div class="stat-box">
+                <h2>7</h2>
+                <p>Courses</p>
+            </div>
+
+            <div class="stat-box">
+                <h2>10+</h2>
+                <p>Expert Trainers</p>
+            </div>
+
+            <div class="stat-box">
+                <h2>98%</h2>
+                <p>Success Rate</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block extrastyle %}
+{{ block.super }}
+
+<link rel="stylesheet"
+      href="{% static 'admin/css/custom_admin.css' %}">
+
+{% endblock %}
+
+{% block branding %}
+
+<h1 id="site-name">
+
+<a href="/admin/">
+
+<img src="{% static 'images/devlogo.png' %}"
+     height="48"
+     style="margin-right:10px;">
+
+</a>
+
+</h1>
+
+{% endblock %}
+
+
+{% block nav-global %}
+
+{% endblock %}

@@ -1,0 +1,603 @@
+/*========================================
+            TEAM HERO
+========================================*/
+
+.team-section{
+
+    padding:100px 0;
+
+    background:linear-gradient(180deg,#f8fbff,#ffffff);
+
+}
+
+.team-section .section-heading{
+
+    max-width:750px;
+
+    margin:0 auto 70px;
+
+}
+
+.team-section .section-heading h2{
+
+    font-size:52px;
+
+    font-weight:800;
+
+    color:#111827;
+
+    margin:20px 0;
+
+}
+
+.team-section .section-heading h2 span{
+
+    color:#2563eb;
+
+}
+
+.team-section .section-heading p{
+
+    font-size:18px;
+
+    color:#6b7280;
+
+    line-height:32px;
+
+}
+
+
+/*========================================
+            TEAM CARD
+========================================*/
+
+.team-card{
+
+    background:#ffffff;
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    text-align:center;
+
+    box-shadow:0 18px 45px rgba(0,0,0,.08);
+
+    transition:.4s;
+
+    position:relative;
+
+    height:100%;
+
+    border:1px solid transparent;
+
+}
+
+.team-card:hover{
+
+    transform:translateY(-12px);
+
+    border-color:#2563eb;
+
+    box-shadow:0 25px 55px rgba(37,99,235,.18);
+
+}
+
+
+/*========================================
+            IMAGE
+========================================*/
+
+.team-card img{
+
+    width:170px;
+
+    height:170px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    margin:35px auto 20px;
+
+    border:6px solid #eaf2ff;
+
+    transition:.4s;
+
+}
+
+.team-card:hover img{
+
+    border-color:#2563eb;
+
+    transform:scale(1.05);
+
+}
+
+
+/*========================================
+            CONTENT
+========================================*/
+
+.team-content{
+
+    padding:0 30px 35px;
+
+}
+
+.team-content h3{
+
+    font-size:28px;
+
+    font-weight:700;
+
+    color:#111827;
+
+    margin-bottom:10px;
+
+}
+
+.team-content span{
+
+    display:inline-block;
+
+    color:#2563eb;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    margin-bottom:18px;
+
+    line-height:28px;
+
+}
+
+.team-content p{
+
+    color:#6b7280;
+
+    line-height:30px;
+
+    margin-bottom:28px;
+
+}
+/*========================================
+            SOCIAL ICONS
+========================================*/
+
+.team-social{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+}
+
+.team-social a{
+
+    width:45px;
+
+    height:45px;
+
+    background:#eaf2ff;
+
+    color:#2563eb;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:18px;
+
+    transition:.35s;
+
+}
+
+.team-social a:hover{
+
+    background:#2563eb;
+
+    color:#ffffff;
+
+    transform:translateY(-5px);
+
+}
+
+
+/*========================================
+        FEATURED DIRECTOR CARD
+========================================*/
+
+.team-card.featured{
+
+    border:3px solid #2563eb;
+
+    transform:scale(1.03);
+
+}
+
+.team-card.featured::before{
+
+    content:"DIRECTOR";
+
+    position:absolute;
+
+    top:20px;
+
+    right:-35px;
+
+    background:#2563eb;
+
+    color:#ffffff;
+
+    padding:8px 45px;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    transform:rotate(45deg);
+
+    letter-spacing:1px;
+
+}
+
+
+/*========================================
+            CTA SECTION
+========================================*/
+
+.team-cta{
+
+    padding:100px 0;
+
+    background:#f8fbff;
+
+}
+
+.team-cta .cta-box{
+
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+
+    padding:70px 45px;
+
+    border-radius:30px;
+
+    text-align:center;
+
+    color:#ffffff;
+
+    box-shadow:0 20px 50px rgba(37,99,235,.25);
+
+}
+
+.team-cta h2{
+
+    font-size:46px;
+
+    font-weight:800;
+
+    margin:20px 0;
+
+}
+
+.team-cta p{
+
+    max-width:720px;
+
+    margin:0 auto 35px;
+
+    line-height:34px;
+
+    font-size:18px;
+
+    color:#dbeafe;
+
+}
+
+.cta-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+.cta-buttons .btn{
+
+    padding:14px 35px;
+
+    border-radius:50px;
+
+    font-weight:600;
+
+}
+/*========================================
+        IMAGE OVERLAY EFFECT
+========================================*/
+
+.team-card{
+
+    overflow:hidden;
+
+}
+
+.team-card img{
+
+    transition:.5s;
+
+}
+
+.team-card:hover img{
+
+    transform:scale(1.08);
+
+}
+
+
+/*========================================
+        EQUAL HEIGHT
+========================================*/
+
+.team-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.team-content{
+
+    flex:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.team-content p{
+
+    flex:1;
+
+}
+
+.team-social{
+
+    margin-top:auto;
+
+}
+
+
+/*========================================
+        SECTION TAG
+========================================*/
+
+.section-tag{
+
+    display:inline-block;
+
+    padding:10px 25px;
+
+    border-radius:50px;
+
+    background:#eaf2ff;
+
+    color:#2563eb;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+}
+
+
+/*========================================
+        RESPONSIVE
+========================================*/
+
+@media(max-width:992px){
+
+.team-section{
+
+    padding:80px 0;
+
+}
+
+.team-section .section-heading h2{
+
+    font-size:42px;
+
+}
+
+.team-card.featured{
+
+    transform:none;
+
+}
+
+.team-card.featured::before{
+
+    right:-38px;
+
+}
+
+.team-cta h2{
+
+    font-size:36px;
+
+}
+
+}
+
+
+@media(max-width:768px){
+
+.team-section{
+
+    padding:60px 0;
+
+}
+
+.team-section .section-heading{
+
+    margin-bottom:45px;
+
+}
+
+.team-section .section-heading h2{
+
+    font-size:34px;
+
+}
+
+.team-section .section-heading p{
+
+    font-size:16px;
+
+    line-height:28px;
+
+}
+
+.team-card{
+
+    border-radius:22px;
+
+}
+
+.team-card img{
+
+    width:140px;
+
+    height:140px;
+
+}
+
+.team-content{
+
+    padding:0 20px 25px;
+
+}
+
+.team-content h3{
+
+    font-size:24px;
+
+}
+
+.team-content span{
+
+    font-size:15px;
+
+}
+
+.team-content p{
+
+    font-size:15px;
+
+    line-height:27px;
+
+}
+
+.team-social a{
+
+    width:42px;
+
+    height:42px;
+
+    font-size:16px;
+
+}
+
+.team-card.featured::before{
+
+    font-size:11px;
+
+    padding:7px 42px;
+
+}
+
+.team-cta{
+
+    padding:70px 0;
+
+}
+
+.team-cta .cta-box{
+
+    padding:45px 25px;
+
+}
+
+.team-cta h2{
+
+    font-size:30px;
+
+}
+
+.team-cta p{
+
+    font-size:16px;
+
+    line-height:30px;
+
+}
+
+.cta-buttons{
+
+    flex-direction:column;
+
+}
+
+.cta-buttons .btn{
+
+    width:100%;
+
+}
+
+}
+
+
+@media(max-width:480px){
+
+.team-card img{
+
+    width:120px;
+
+    height:120px;
+
+}
+
+.team-section .section-heading h2{
+
+    font-size:30px;
+
+}
+
+.team-content h3{
+
+    font-size:22px;
+
+}
+
+.team-card.featured::before{
+
+    display:none;
+
+}
+
+}
