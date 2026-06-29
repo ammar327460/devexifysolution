@@ -11,11 +11,11 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'local-dev-key')
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = [
-    
     'localhost',
     '127.0.0.1',
-    'devexifysolutions.onrender.com',
-
+    'devexify.onrender.com',
+    'devexifysolutions.onrender.com',  # YEH ADD KARO
+    '.onrender.com',
 ]
 
 INSTALLED_APPS = [
