@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.models import User
 from django.utils.crypto import get_random_string
-from django.core.mail import send_mail
+from django.core.mail import get_connection, EmailMultiAlternatives
 from django.conf import settings
 from .models import Admission, StudentProfile
 
@@ -60,22 +60,7 @@ class AdmissionAdmin(admin.ModelAdmin):
             site_url = getattr(settings, "SITE_URL", "https://devexifysolutions.onrender.com")
             portal_url = f"{site_url}/portal/login/"
 
-            try:
-                send_mail(
-                    subject=f"Devexify Solutions - Login Credentials for {admission.full_name}",
-                    message=(
-                        f"Assalam o Alaikum {admission.full_name},\n\n"
-                        f"Aapka admission approve ho gaya hai.\n\n"
-                        f"Course: {admission.course}\n"
-                        f"Username: {username}\n"
-                        f"Password: {password}\n"
-                        f"Portal: {portal_url}\n\n"
-                        f"Devexify Solutions\n"
-                        f"+92 326 0995953"
-                    ),
-                    from_email=settings.DEFAULT_FROM_EMAIL,
-                    recipient_list=[admission.email],
-                    html_message=f"""<!DOCTYPE html>
+            html_content = f"""<!DOCTYPE html>
 <html>
 <head>
 <style>
@@ -102,10 +87,10 @@ class AdmissionAdmin(admin.ModelAdmin):
   </div>
   <div class="email-body">
     <p>Assalam o Alaikum, <strong>{admission.full_name}</strong>!</p>
-    <p style="color:#6b7280;">Congratulations! Your admission for <strong>{admission.course}</strong> has been approved.</p>
+    <p style="color:#6b7280;">Your admission for <strong>{admission.course}</strong> has been approved.</p>
     <div class="credentials-box">
       <h3>Your Login Details</h3>
-      <div class="cred-row"><span class="cred-label">Portal Link</span><span class="cred-value">{portal_url}</span></div>
+      <div class="cred-row"><span class="cred-label">Portal</span><span class="cred-value">{portal_url}</span></div>
       <div class="cred-row"><span class="cred-label">Username</span><span class="cred-value">{username}</span></div>
       <div class="cred-row"><span class="cred-label">Password</span><span class="cred-value">{password}</span></div>
       <div class="cred-row"><span class="cred-label">Course</span><span class="cred-value">{admission.course}</span></div>
@@ -118,9 +103,38 @@ class AdmissionAdmin(admin.ModelAdmin):
   </div>
 </div>
 </body>
-</html>""",
-                    fail_silently=False,
+</html>"""
+
+            try:
+                connection = get_connection(
+                    backend='django.core.mail.backends.smtp.EmailBackend',
+                    host='smtp.gmail.com',
+                    port=465,
+                    username=settings.EMAIL_HOST_USER,
+                    password=settings.EMAIL_HOST_PASSWORD,
+                    use_ssl=True,
+                    use_tls=False,
+                    timeout=10,
                 )
+
+                email = EmailMultiAlternatives(
+                    subject=f"Devexify Solutions - Login Credentials for {admission.full_name}",
+                    body=(
+                        f"Assalam o Alaikum {admission.full_name},\n\n"
+                        f"Course: {admission.course}\n"
+                        f"Username: {username}\n"
+                        f"Password: {password}\n"
+                        f"Portal: {portal_url}\n\n"
+                        f"Devexify Solutions\n"
+                        f"+92 326 0995953"
+                    ),
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    to=[admission.email],
+                    connection=connection,
+                )
+                email.attach_alternative(html_content, "text/html")
+                email.send()
+
                 self.message_user(
                     request,
                     f"✅ {admission.full_name} approved! Email sent to {admission.email} — Username: {username}",
