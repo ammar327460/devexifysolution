@@ -63,7 +63,7 @@ class AdmissionAdmin(admin.ModelAdmin):
             admission.save()
 
             # Portal URL — local ya production automatically
-            site_url = getattr(settings, "SITE_URL", "http://127.0.0.1:8000")
+            site_url = getattr(settings, "SITE_URL", "http://devexifysoluions.onrender.com")
             portal_url = f"{site_url}/portal/login/"
 
             # Student ko Email bhejo
