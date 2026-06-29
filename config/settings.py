@@ -9,6 +9,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'local-dev-key')
 
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+EMAIL_USE_TLS = False
 
 ALLOWED_HOSTS = [
     'localhost',
