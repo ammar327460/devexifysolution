@@ -11,6 +11,7 @@
     <style>
         * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
         body { background: #f4f7ff; }
+        .sidebar { transform: translateX(-100%); transition: transform .35s ease; }
         .sidebar { width:260px; min-height:100vh; background:linear-gradient(180deg,#1e3a8a,#2563eb); position:fixed; left:0; top:0; display:flex; flex-direction:column; padding:30px 0; z-index:100; }
         .sidebar-logo { padding:0 25px 30px; border-bottom:1px solid rgba(255,255,255,.15); }
         .sidebar-logo img { height:50px; }
@@ -63,8 +64,18 @@
         .contact-item i { width:44px; height:44px; border-radius:12px; background:#2563eb; color:#fff; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
         .contact-item p { margin:0; color:#374151; font-size:15px; font-weight:500; }
 
-        @media(max-width:768px) { .sidebar{display:none;} .main-content{margin-left:0;padding:20px;} .details-grid{grid-template-columns:1fr;} }
-    </style>
+        .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 999; }
+.hamburger-btn { display: none; background: #eaf2ff; border: none; width: 42px; height: 42px; border-radius: 12px; color: #2563eb; font-size: 20px; cursor: pointer; align-items: center; justify-content: center; }
+
+@media(max-width:992px) {
+    .sidebar { transform: translateX(-100%); }
+    .sidebar.open { transform: translateX(0); }
+    .sidebar-close { display: block; }
+    .sidebar-overlay.show { display: block; }
+    .hamburger-btn { display: flex; }
+    .main-content { margin-left: 0; padding: 16px; }
+    .details-grid { grid-template-columns: 1fr; }
+}
 </head>
 <body>
 
