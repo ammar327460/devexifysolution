@@ -8,20 +8,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="icon" type="image/png" href="{% static 'images/devlogo.png' %}">
     <style>
         * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
         body { background: #f4f7ff; }
-        /* Same sidebar as dashboard */
-        .sidebar {
-            width: 260px; min-height: 100vh;
-            background: linear-gradient(180deg, #1e3a8a, #2563eb);
-            position: fixed; left: 0; top: 0;
-            display: flex; flex-direction: column;
-            padding: 30px 0; z-index: 100;
-        }
-        .sidebar-logo { padding: 0 25px 30px; border-bottom: 1px solid rgba(255,255,255,.15); }
+        .sidebar { width: 260px; min-height: 100vh; background: linear-gradient(180deg, #1e3a8a, #2563eb); position: fixed; left: 0; top: 0; display: flex; flex-direction: column; padding: 30px 0; z-index: 1000; transition: transform .35s ease; }
+        .sidebar-logo { padding: 0 25px 30px; border-bottom: 1px solid rgba(255,255,255,.15); display:flex; align-items:center; justify-content:space-between; }
         .sidebar-logo img { height: 50px; }
         .sidebar-badge { background: rgba(255,255,255,.15); color: #fff; padding: 5px 12px; border-radius: 50px; font-size: 12px; font-weight: 600; margin-top: 10px; display: inline-block; }
+        .sidebar-close { display:none; background:none; border:none; color:#fff; font-size:24px; cursor:pointer; }
         .sidebar-nav { padding: 25px 15px; flex: 1; }
         .nav-label { color: rgba(255,255,255,.5); font-size: 12px; font-weight: 700; letter-spacing: 1px; padding: 0 10px; margin-bottom: 10px; }
         .nav-link { display: flex; align-items: center; gap: 12px; color: rgba(255,255,255,.75); padding: 13px 16px; border-radius: 14px; text-decoration: none; font-weight: 500; font-size: 15px; transition: .3s; }
@@ -30,12 +25,14 @@
         .sidebar-footer { padding: 20px 15px; border-top: 1px solid rgba(255,255,255,.15); }
         .logout-btn { display: flex; align-items: center; gap: 12px; color: rgba(255,255,255,.75); padding: 13px 16px; border-radius: 14px; text-decoration: none; font-weight: 500; font-size: 15px; transition: .3s; }
         .logout-btn:hover { background: rgba(255,0,0,.2); color: #ff8888; }
+        .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 999; }
 
-        .main-content { margin-left: 260px; padding: 35px; }
+        .main-content { margin-left: 260px; padding: 35px; transition: margin .35s ease; }
         .topbar { display: flex; align-items: center; justify-content: space-between; background: #fff; border-radius: 20px; padding: 18px 28px; margin-bottom: 30px; box-shadow: 0 5px 20px rgba(0,0,0,.06); }
+        .topbar-left { display:flex; align-items:center; gap:15px; }
+        .hamburger-btn { display: none; background: #eaf2ff; border: none; width: 42px; height: 42px; border-radius: 12px; color: #2563eb; font-size: 20px; cursor: pointer; align-items: center; justify-content: center; }
         .topbar-title { font-size: 22px; font-weight: 700; color: #111827; }
 
-        /* PROFILE */
         .profile-top {
             background: linear-gradient(135deg, #2563eb, #1d4ed8);
             border-radius: 24px; padding: 40px; color: #fff;
@@ -55,25 +52,81 @@
         .profile-course { opacity: .85; font-size: 16px; margin-top: 6px; }
         .profile-batch { opacity: .7; font-size: 14px; margin-top: 4px; }
 
-        /* FORM CARD */
         .form-card { background: #fff; border-radius: 24px; padding: 35px; box-shadow: 0 5px 20px rgba(0,0,0,.06); }
         .form-card h5 { font-size: 18px; font-weight: 700; color: #111827; margin-bottom: 25px; }
         .form-label { font-weight: 600; color: #374151; font-size: 15px; }
-        .form-control { height: 52px; border-radius: 12px; border: 1.5px solid #e5e7eb; font-size: 15px; transition: .3s; }
+        .form-control { height: 52px; border-radius: 12px; border: 1.5px solid #e5e7eb; font-size: 15px; transition: .3s; width: 100%; }
         .form-control:focus { border-color: #2563eb; box-shadow: 0 0 0 4px rgba(37,99,235,.1); }
         textarea.form-control { height: auto; }
-        .btn-save { background: linear-gradient(135deg,#2563eb,#1d4ed8); color:#fff; border:none; padding:14px 40px; border-radius:50px; font-size:16px; font-weight:700; transition:.35s; }
+        .btn-save { background: linear-gradient(135deg,#2563eb,#1d4ed8); color:#fff; border:none; padding:14px 40px; border-radius:50px; font-size:16px; font-weight:700; transition:.35s; width: 100%; max-width: 300px; }
         .btn-save:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(37,99,235,.3); }
 
-        @media(max-width:768px) { .sidebar{display:none;} .main-content{margin-left:0;padding:20px;} .profile-top{flex-direction:column;text-align:center;} }
+        /* CERTIFICATE CARD */
+        .certificate-card {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border: 2px solid #fcd34d;
+            border-radius: 20px;
+            padding: 28px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .certificate-icon {
+            width: 65px; height: 65px; border-radius: 16px;
+            background: #f59e0b; color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 28px; flex-shrink: 0;
+        }
+        .certificate-info { flex: 1; min-width: 180px; }
+        .certificate-info h5 { color: #92400e; font-size: 17px; font-weight: 700; margin-bottom: 5px; }
+        .certificate-info p { color: #92400e; font-size: 14px; margin: 0; opacity: .85; }
+        .btn-certificate {
+            background: #f59e0b; color: #fff; border: none;
+            padding: 12px 28px; border-radius: 50px;
+            font-weight: 700; font-size: 14px; text-decoration: none;
+            display: inline-flex; align-items: center; gap: 8px;
+            white-space: nowrap;
+        }
+        .btn-certificate:hover { background: #d97706; color: #fff; }
+        .certificate-pending {
+            background: rgba(255,255,255,.6); color: #92400e;
+            padding: 12px 28px; border-radius: 50px;
+            font-weight: 600; font-size: 14px;
+        }
+
+        @media(max-width:992px) {
+            .sidebar { transform: translateX(-100%); }
+            .sidebar.open { transform: translateX(0); }
+            .sidebar-close { display: block; }
+            .sidebar-overlay.show { display: block; }
+            .hamburger-btn { display: flex; }
+            .main-content { margin-left: 0; padding: 16px; }
+            .topbar { padding: 14px 18px; border-radius: 16px; }
+            .topbar-title { font-size: 18px; }
+            .profile-top { flex-direction: column; text-align: center; padding: 28px 20px; gap: 18px; }
+            .form-card { padding: 22px; }
+            .certificate-card { flex-direction: column; text-align: center; }
+        }
+        @media(max-width:480px) {
+            .main-content { padding: 12px; }
+            .profile-name { font-size: 20px; }
+            .form-card { padding: 18px; }
+        }
     </style>
 </head>
 <body>
 
-<aside class="sidebar">
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+<aside class="sidebar" id="sidebar">
     <div class="sidebar-logo">
-        <img src="{% static 'images/devlogo.png' %}" alt="Devexify">
-        <div class="sidebar-badge">🎓 Student Portal</div>
+        <div>
+            <img src="{% static 'images/devlogo.png' %}" alt="Devexify">
+            <div class="sidebar-badge">🎓 Student Portal</div>
+        </div>
+        <button class="sidebar-close" onclick="closeSidebar()"><i class="fa-solid fa-xmark"></i></button>
     </div>
     <nav class="sidebar-nav">
         <div class="nav-label">MENU</div>
@@ -90,7 +143,10 @@
 
 <div class="main-content">
     <div class="topbar">
-        <div class="topbar-title">My Profile</div>
+        <div class="topbar-left">
+            <button class="hamburger-btn" onclick="openSidebar()"><i class="fa-solid fa-bars"></i></button>
+            <div class="topbar-title">My Profile</div>
+        </div>
     </div>
 
     {% if messages %}
@@ -99,7 +155,6 @@
         {% endfor %}
     {% endif %}
 
-    <!-- Profile Header -->
     <div class="profile-top">
         <div class="profile-avatar">
             {% if profile.profile_pic %}
@@ -115,7 +170,26 @@
         </div>
     </div>
 
-    <!-- Edit Form -->
+    <!-- CERTIFICATE SECTION -->
+    <div class="certificate-card">
+        <div class="certificate-icon"><i class="fa-solid fa-certificate"></i></div>
+        <div class="certificate-info">
+            <h5>Course Certificate</h5>
+            {% if profile.certificate %}
+                <p>Your certificate is ready to download!</p>
+            {% else %}
+                <p>Certificate will appear here once your course is complete.</p>
+            {% endif %}
+        </div>
+        {% if profile.certificate %}
+            <a href="{{ profile.certificate.url }}" target="_blank" class="btn-certificate">
+                <i class="fa-solid fa-download"></i> Download Certificate
+            </a>
+        {% else %}
+            <span class="certificate-pending"><i class="fa-solid fa-clock"></i> Pending</span>
+        {% endif %}
+    </div>
+
     <div class="form-card">
         <h5><i class="fa-solid fa-pen me-2" style="color:#2563eb"></i>Edit Profile</h5>
         <form method="POST" enctype="multipart/form-data">
@@ -156,5 +230,15 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+function openSidebar() {
+    document.getElementById('sidebar').classList.add('open');
+    document.getElementById('sidebarOverlay').classList.add('show');
+}
+function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sidebarOverlay').classList.remove('show');
+}
+</script>
 </body>
 </html>
