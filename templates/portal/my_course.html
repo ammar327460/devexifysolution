@@ -137,9 +137,6 @@ font-size:16px;
 }
 
 }
-</head>
-<body>
-<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
 .sidebar-close{
 display:none;
 background:none;
@@ -170,6 +167,11 @@ cursor:pointer;
 align-items:center;
 justify-content:center;
 }
+</style>
+</head>
+<body>
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
 <aside class="sidebar" id="sidebar">
     <div class="sidebar-logo">
         <img src="{% static 'images/devlogo.png' %}" alt="Devexify">
