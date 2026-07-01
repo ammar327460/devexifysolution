@@ -11,6 +11,7 @@ class StudentProfileAdmin(admin.ModelAdmin):
     list_display  = ["full_name", "course", "batch", "progress", "is_active"]
     list_filter   = ["course", "is_active"]
     search_fields = ["full_name", "user__username"]
+    
 
 
 @admin.register(Admission)
