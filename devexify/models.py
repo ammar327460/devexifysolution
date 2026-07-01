@@ -93,3 +93,10 @@ class StudentProfile(models.Model):
     class Meta:
         verbose_name        = "Student Profile"
         verbose_name_plural = "Student Profiles"
+        # StudentProfile class mein is_active ke baad add karo
+certificate = models.FileField(
+    upload_to="certificates/",
+    blank=True,
+    null=True,
+    verbose_name="Course Certificate"
+)
