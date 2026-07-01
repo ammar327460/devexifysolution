@@ -86,6 +86,12 @@ class StudentProfile(models.Model):
     enrolled_on = models.DateField(auto_now_add=True)
     progress    = models.IntegerField(default=0)
     is_active   = models.BooleanField(default=True)
+    certificate = models.FileField(
+    upload_to="certificates/",
+    blank=True,
+    null=True,
+    verbose_name="Course Certificate"
+    )
 
     def __str__(self):
         return f"{self.full_name} — {self.course}"
@@ -94,9 +100,3 @@ class StudentProfile(models.Model):
         verbose_name        = "Student Profile"
         verbose_name_plural = "Student Profiles"
         # StudentProfile class mein is_active ke baad add karo
-certificate = models.FileField(
-    upload_to="certificates/",
-    blank=True,
-    null=True,
-    verbose_name="Course Certificate"
-)
