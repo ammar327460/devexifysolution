@@ -1195,3 +1195,23 @@ body{
     .slide-content h2 { font-size: 26px; }
     .slide-content p { font-size: 14px; }
 }
+.slide {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Dark overlay taake text readable rahe */
+.slide::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,.45);
+    z-index: 1;
+}
+
+.slide-content,
+.slide-stats {
+    position: relative;
+    z-index: 2;
+}
