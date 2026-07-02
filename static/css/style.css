@@ -1297,3 +1297,52 @@ body{
     position: relative;
     z-index: 2;
 }
+@media (max-width:768px){
+
+    .slide{
+        min-height:520px;
+        background-size:contain !important;
+        background-position:center bottom !important;
+        background-repeat:no-repeat;
+        padding:35px 20px 90px;
+        justify-content:flex-start;
+    }
+
+    .slide::after{
+        background:linear-gradient(
+            to bottom,
+            rgba(8,20,60,.70),
+            rgba(8,20,60,.45)
+        );
+    }
+
+    .slide-content{
+        max-width:100%;
+        text-align:left;
+    }
+
+    .slide-content h2{
+        font-size:24px;
+    }
+
+    .slide-content p{
+        font-size:15px;
+        margin-bottom:20px;
+    }
+
+    .slide-btn{
+        width:100%;
+        justify-content:center;
+    }
+
+    .slide-stats{
+        margin-top:20px;
+        display:flex;
+        justify-content:space-between;
+        gap:10px;
+    }
+
+    .slide-stat{
+        flex:1;
+    }
+}
