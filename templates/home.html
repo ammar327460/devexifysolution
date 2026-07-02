@@ -6,7 +6,141 @@ Home
 {% endblock %}
 
 {% block content %}
+<!-- ================= BANNER SLIDER ================= -->
+<section class="banner-slider">
+    <div class="slider-container">
+        <div class="slider-track" id="sliderTrack">
 
+            <!-- SLIDE 1 — Admissions Open -->
+            <div class="slide slide-1">
+                <div class="slide-content">
+                    <div class="slide-badge">🚀 2026 Admissions Open</div>
+                    <h2>Start Your Digital Career <span>Today!</span></h2>
+                    <p>Join Pakistan's fastest growing online learning platform</p>
+                    <a href="{% url 'admission' %}" class="slide-btn">Apply Now</a>
+                </div>
+                <div class="slide-stats">
+                    <div class="slide-stat"><h3>50+</h3><p>Students</p></div>
+                    <div class="slide-stat"><h3>6+</h3><p>Courses</p></div>
+                    <div class="slide-stat"><h3>98%</h3><p>Success Rate</p></div>
+                </div>
+            </div>
+
+            <!-- SLIDE 2 — Python -->
+            <div class="slide slide-2">
+                <div class="slide-content">
+                    <div class="slide-badge">🐍 Programming</div>
+                    <h2>Python <span>Development</span></h2>
+                    <p>Beginner to Advanced — OOP, APIs, Django & Real Projects</p>
+                    <div class="slide-info">
+                        <span>⏳ 2 Months</span>
+                        <span>💰 PKR 2000/Month</span>
+                        <span>⭐ 4.9 Rating</span>
+                    </div>
+                    <a href="{% url 'admission' %}?course=Python Development" class="slide-btn">Enroll Now</a>
+                </div>
+            </div>
+
+            <!-- SLIDE 3 — AI -->
+            <div class="slide slide-3">
+                <div class="slide-content">
+                    <div class="slide-badge">🤖 Artificial Intelligence</div>
+                    <h2>AI & <span>Prompt Engineering</span></h2>
+                    <p>ChatGPT, AI Tools, AI Automation & Image Generation</p>
+                    <div class="slide-info">
+                        <span>⏳ 2 Months</span>
+                        <span>💰 PKR 2000/Month</span>
+                        <span>⭐ 4.9 Rating</span>
+                    </div>
+                    <a href="{% url 'admission' %}?course=Artificial Intelligence" class="slide-btn">Enroll Now</a>
+                </div>
+            </div>
+
+            <!-- SLIDE 4 — Web Development -->
+            <div class="slide slide-4">
+                <div class="slide-content">
+                    <div class="slide-badge">💻 Web Development</div>
+                    <h2>HTML • CSS • <span>Django</span></h2>
+                    <p>Build Modern Websites & Web Apps from Scratch</p>
+                    <div class="slide-info">
+                        <span>⏳ 2 Months</span>
+                        <span>💰 PKR 2000/Month</span>
+                        <span>⭐ 4.9 Rating</span>
+                    </div>
+                    <a href="{% url 'admission' %}?course=Web Development" class="slide-btn">Enroll Now</a>
+                </div>
+            </div>
+
+            <!-- SLIDE 5 — Graphic Designing -->
+            <div class="slide slide-5">
+                <div class="slide-content">
+                    <div class="slide-badge">🎨 Design</div>
+                    <h2>Graphic <span>Designing</span></h2>
+                    <p>Canva, Adobe Photoshop & Illustrator — Branding & Posters</p>
+                    <div class="slide-info">
+                        <span>⏳ 2 Months</span>
+                        <span>💰 PKR 2000/Month</span>
+                        <span>⭐ 4.9 Rating</span>
+                    </div>
+                    <a href="{% url 'admission' %}?course=Graphic Designing" class="slide-btn">Enroll Now</a>
+                </div>
+            </div>
+
+            <!-- SLIDE 6 — Social Media -->
+            <div class="slide slide-6">
+                <div class="slide-content">
+                    <div class="slide-badge">📱 Marketing</div>
+                    <h2>Social Media <span>Marketing</span></h2>
+                    <p>Meta Ads, Instagram Growth, Content Strategy & Branding</p>
+                    <div class="slide-info">
+                        <span>⏳ 2 Months</span>
+                        <span>💰 PKR 2000/Month</span>
+                        <span>⭐ 4.9 Rating</span>
+                    </div>
+                    <a href="{% url 'admission' %}?course=Social Media Marketing" class="slide-btn">Enroll Now</a>
+                </div>
+            </div>
+
+            <!-- SLIDE 7 — Scientific Writing -->
+            <div class="slide slide-7">
+                <div class="slide-content">
+                    <div class="slide-badge">📝 Research</div>
+                    <h2>Scientific <span>Writing</span></h2>
+                    <p>Research Papers, Literature Review & Publication Techniques</p>
+                    <div class="slide-info">
+                        <span>⏳ 2 Months</span>
+                        <span>💰 PKR 2000/Month</span>
+                        <span>⭐ 4.9 Rating</span>
+                    </div>
+                    <a href="{% url 'admission' %}?course=Scientific Writing" class="slide-btn">Enroll Now</a>
+                </div>
+            </div>
+
+            <!-- SLIDE 8 — Free Demo -->
+            <div class="slide slide-8">
+                <div class="slide-content">
+                    <div class="slide-badge">🎁 Free Offer</div>
+                    <h2>Free <span>Demo Class</span> Available!</h2>
+                    <p>Try before you enroll — Join our free demo and experience Devexify</p>
+                    <a href="{% url 'admission' %}?type=Free Demo Class" class="slide-btn">Book Free Demo</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ARROWS -->
+        <button class="slider-arrow prev" onclick="changeSlide(-1)">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button class="slider-arrow next" onclick="changeSlide(1)">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
+        <!-- DOTS -->
+        <div class="slider-dots" id="sliderDots"></div>
+
+    </div>
+</section>
 <!-- ================= HERO ================= -->
 <section class="hero">
 
@@ -185,5 +319,56 @@ Home
     </div>
 
 </section>
+{% block extra_js %}
+<script>
+const totalSlides = 8;
+let currentSlide = 0;
+let autoSlide;
+
+const dotsContainer = document.getElementById('sliderDots');
+for (let i = 0; i < totalSlides; i++) {
+    const dot = document.createElement('button');
+    dot.classList.add('dot');
+    if (i === 0) dot.classList.add('active');
+    dot.onclick = () => goToSlide(i);
+    dotsContainer.appendChild(dot);
+}
+
+function goToSlide(index) {
+    currentSlide = index;
+    document.getElementById('sliderTrack').style.transform = `translateX(-${currentSlide * 100}%)`;
+    document.querySelectorAll('.dot').forEach((d, i) => {
+        d.classList.toggle('active', i === currentSlide);
+    });
+}
+
+function changeSlide(direction) {
+    currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+    goToSlide(currentSlide);
+    resetAutoSlide();
+}
+
+function resetAutoSlide() {
+    clearInterval(autoSlide);
+    autoSlide = setInterval(() => changeSlide(1), 4000);
+}
+
+resetAutoSlide();
+
+let touchStartX = 0;
+const track = document.getElementById('sliderTrack');
+
+track.addEventListener('touchstart', e => {
+    touchStartX = e.touches[0].clientX;
+});
+
+track.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+        changeSlide(diff > 0 ? 1 : -1);
+    }
+});
+</script>
+
 
 {% endblock %}
