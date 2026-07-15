@@ -18,3 +18,4 @@ urlpatterns = [
     path("portal/profile/",   views.student_profile,   name="student_profile"),
     path("portal/my-course/", views.my_course,         name="my_course"),
 ]
+path("ai-agent/", views.ai_agent, name="ai_agent"),
