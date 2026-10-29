@@ -1,44 +1,62 @@
+
+import json
+import logging
+
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
+
+from google import genai
+from google.genai import types
 
 from .forms import AdmissionForm, StudentProfileForm
 from .models import StudentProfile
 
 
+logger = logging.getLogger(__name__)
+
+
 # ============================================================
-#   PUBLIC PAGES
+# PUBLIC PAGES
 # ============================================================
 
 def home(request):
     return render(request, "home.html")
 
+
 def about(request):
     return render(request, "about.html")
+
 
 def courses(request):
     return render(request, "courses.html")
 
+
 def contact(request):
     return render(request, "contact.html")
+
 
 def team(request):
     return render(request, "team.html")
 
 
 def admission(request):
-    course            = request.GET.get("course", "")
+    course = request.GET.get("course", "")
     registration_type = request.GET.get("type", "")
 
     if request.method == "POST":
         form = AdmissionForm(request.POST, request.FILES)
+
         if form.is_valid():
             form.save()
             messages.success(
                 request,
-                "✅ Your admission has been submitted successfully! "
+                "Your admission has been submitted successfully! "
                 "We will contact you within 24 hours after verifying your payment."
             )
             return redirect("admission")
@@ -47,13 +65,13 @@ def admission(request):
 
     return render(request, "admission.html", {
         "form": form,
-        "selected_course":   course,
+        "selected_course": course,
         "registration_type": registration_type,
     })
 
 
 # ============================================================
-#   STUDENT PORTAL — LOGIN / LOGOUT
+# STUDENT PORTAL — LOGIN / LOGOUT
 # ============================================================
 
 def student_login(request):
@@ -65,16 +83,27 @@ def student_login(request):
     if request.method == "POST":
         username = request.POST.get("username", "").strip()
         password = request.POST.get("password", "")
-        user = authenticate(request, username=username, password=password)
+
+        user = authenticate(
+            request,
+            username=username,
+            password=password
+        )
 
         if user is not None:
             if user.is_superuser:
-                messages.error(request, "Admin yahan login nahi kar sakta. /admin/ use karein.")
+                messages.error(
+                    request,
+                    "Admin yahan login nahi kar sakta. /admin/ use karein."
+                )
             elif hasattr(user, "profile"):
                 login(request, user)
                 return redirect("student_dashboard")
             else:
-                messages.error(request, "No student profile found. Contact admin.")
+                messages.error(
+                    request,
+                    "No student profile found. Contact admin."
+                )
         else:
             messages.error(request, "Invalid username or password.")
 
@@ -87,149 +116,260 @@ def student_logout(request):
 
 
 # ============================================================
-#   STUDENT PORTAL — DASHBOARD
+# STUDENT PORTAL — DASHBOARD
 # ============================================================
 
 @login_required(login_url="student_login")
 def student_dashboard(request):
     if request.user.is_superuser:
         return redirect("/admin/")
+
     try:
         profile = StudentProfile.objects.get(user=request.user)
     except StudentProfile.DoesNotExist:
         logout(request)
-        messages.error(request, "No student profile found. Contact admin.")
+        messages.error(
+            request,
+            "No student profile found. Contact admin."
+        )
         return redirect("student_login")
-    return render(request, "portal/dashboard.html", {"profile": profile})
+
+    return render(
+        request,
+        "portal/dashboard.html",
+        {"profile": profile}
+    )
 
 
 # ============================================================
-#   STUDENT PORTAL — PROFILE
+# STUDENT PORTAL — PROFILE
 # ============================================================
 
 @login_required(login_url="student_login")
 def student_profile(request):
     if request.user.is_superuser:
         return redirect("/admin/")
+
     try:
         profile = StudentProfile.objects.get(user=request.user)
     except StudentProfile.DoesNotExist:
         logout(request)
-        messages.error(request, "No student profile found. Contact admin.")
+        messages.error(
+            request,
+            "No student profile found. Contact admin."
+        )
         return redirect("student_login")
 
     if request.method == "POST":
-        form = StudentProfileForm(request.POST, request.FILES, instance=profile)
+        form = StudentProfileForm(
+            request.POST,
+            request.FILES,
+            instance=profile
+        )
+
         if form.is_valid():
             form.save()
-            messages.success(request, "✅ Profile updated successfully!")
+            messages.success(
+                request,
+                "Profile updated successfully!"
+            )
             return redirect("student_profile")
     else:
         form = StudentProfileForm(instance=profile)
 
-    return render(request, "portal/profile.html", {"profile": profile, "form": form})
+    return render(
+        request,
+        "portal/profile.html",
+        {
+            "profile": profile,
+            "form": form,
+        }
+    )
 
 
 # ============================================================
-#   STUDENT PORTAL — MY COURSE
+# STUDENT PORTAL — MY COURSE
 # ============================================================
 
 @login_required(login_url="student_login")
 def my_course(request):
     if request.user.is_superuser:
         return redirect("/admin/")
+
     try:
         profile = StudentProfile.objects.get(user=request.user)
     except StudentProfile.DoesNotExist:
         logout(request)
         messages.error(request, "No student profile found.")
         return redirect("student_login")
-    return render(request, "portal/my_course.html", {"profile": profile})
-import google.generativeai as genai
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-import json
+
+    return render(
+        request,
+        "portal/my_course.html",
+        {"profile": profile}
+    )
+
+
+# ============================================================
+# DEX AI — SYSTEM PROMPT
+# ============================================================
 
 DEVEXIFY_SYSTEM_PROMPT = """
-You are "Dex" — the official AI Advisor of Devexify Solutions, Pakistan's fastest growing online learning platform.
+You are Dex, the official AI Advisor of Devexify Solutions,
+an online learning platform in Pakistan.
 
 YOUR PERSONALITY:
-- Friendly, helpful, and enthusiastic
-- You speak in a mix of English and Urdu (Roman Urdu) naturally
-- You are very convincing and persuasive about admissions
-- You genuinely care about students' futures
+- Friendly, helpful, and enthusiastic.
+- Speak naturally in the language used by the student.
+- You may mix English and Roman Urdu when appropriate.
+- Care about students' learning goals and future.
 
-YOUR KNOWLEDGE:
-Devexify Solutions offers these courses:
-1. Python Development — PKR 2000/month, 2 months, Beginner to Advanced
-2. Artificial Intelligence — PKR 2000/month, 2 months, ChatGPT, AI Tools, Automation
-3. Web Development — PKR 2000/month, 2 months, HTML, CSS, Django, WordPress
-4. Graphic Designing — PKR 2000/month, 2 months, Canva, Photoshop, Illustrator
-5. Social Media Marketing — PKR 2000/month, 2 months, Meta Ads, Instagram, Branding
-6. Scientific Writing — PKR 2000/month, 2 months, Research Papers, Publications
+COURSES:
+1. Python Development — PKR 2000/month, 2 months,
+   Beginner to Advanced.
+2. Artificial Intelligence — PKR 2000/month, 2 months,
+   ChatGPT, AI Tools, Automation.
+3. Web Development — PKR 2000/month, 2 months,
+   HTML, CSS, Django, WordPress.
+4. Graphic Designing — PKR 2000/month, 2 months,
+   Canva, Photoshop, Illustrator.
+5. Social Media Marketing — PKR 2000/month, 2 months,
+   Meta Ads, Instagram, Branding.
+6. Scientific Writing — PKR 2000/month, 2 months,
+   Research Papers, Publications.
 
-IMPORTANT FACTS:
-- Free Demo Class available
-- 50+ students already enrolled
-- 98% success rate
-- Live online classes
-- Professional certificate included
-- Expert trainers
+OTHER INFORMATION:
+- Free demo class is available.
+- Live online classes.
+- Professional certificate included.
+- Expert trainers.
 - Contact: +92 326 0995953
 - WhatsApp: +92 326 0995953
 - Email: devexifysolutions@gmail.com
-- Website: devexifysolutions.onrender.com
-
-YOUR GOAL:
-1. Answer student questions helpfully
-2. Understand their interests and suggest the best course
-3. Remove their doubts and hesitation
-4. ALWAYS end with encouraging them to enroll or book a free demo
-5. If they seem interested, push them gently: "Abhi apply kar lo — seats limited hain!"
-6. Never let a student leave without giving them a reason to enroll
+- Website: https://devexifysolutions.onrender.com/
 
 RULES:
-- Always respond in the same language the student uses (Urdu/English mix is fine)
-- Keep responses concise but helpful (2-4 sentences max)
-- Always add admission CTA at the end when relevant
-- Never make up information about courses
-- Be warm and encouraging
+- Answer questions helpfully and accurately.
+- Keep responses concise, usually 2-4 sentences.
+- Recommend courses based on the student's interests.
+- Encourage students to apply or book a free demo when relevant.
+- Never invent course details, discounts, or guarantees.
+- Be warm, respectful, and encouraging.
 """
 
+
+# ============================================================
+# DEX AI — CHAT API
+# ============================================================
+
 @csrf_exempt
+@require_POST
 def ai_agent(request):
-    if request.method == "POST":
-        try:
-            data = json.loads(request.body)
-            user_message = data.get("message", "")
-            chat_history = data.get("history", [])
+    try:
+        data = json.loads(request.body or "{}")
 
-            genai.configure(api_key=settings.GEMINI_API_KEY)
-            model = genai.GenerativeModel(
-                model_name="gemini-1.5-flash",
-                system_instruction=DEVEXIFY_SYSTEM_PROMPT
-            )
-
-            history = []
-            for msg in chat_history:
-                history.append({
-                    "role": msg["role"],
-                    "parts": [msg["content"]]
-                })
-
-            chat = model.start_chat(history=history)
-            response = chat.send_message(user_message)
-
-            return JsonResponse({
-                "success": True,
-                "message": response.text
-            })
-
-        except Exception as e:
+        if not isinstance(data, dict):
             return JsonResponse({
                 "success": False,
-                "message": "Sorry, kuch masla aa gaya. Please dobara try karein.",
-                "error": str(e)
+                "message": "Invalid chat request."
+            }, status=400)
+
+        user_message = data.get("message", "")
+        chat_history = data.get("history", [])
+
+        if not isinstance(user_message, str):
+            return JsonResponse({
+                "success": False,
+                "message": "Invalid message."
+            }, status=400)
+
+        user_message = user_message.strip()
+
+        if not user_message:
+            return JsonResponse({
+                "success": False,
+                "message": "Please enter a message."
+            }, status=400)
+
+        if not isinstance(chat_history, list):
+            chat_history = []
+
+        api_key = getattr(settings, "GEMINI_API_KEY", None)
+
+        if not api_key:
+            logger.error("GEMINI_API_KEY is not configured.")
+            return JsonResponse({
+                "success": False,
+                "message": "Dex AI is not configured yet. Please try later."
+            }, status=503)
+
+        contents = []
+
+        for msg in chat_history[-20:]:
+            if not isinstance(msg, dict):
+                continue
+
+            role = msg.get("role", "")
+            content = msg.get("content", "")
+
+            if not isinstance(content, str) or not content.strip():
+                continue
+
+            if role in ("assistant", "model", "bot"):
+                role = "model"
+            elif role == "user":
+                role = "user"
+            else:
+                continue
+
+            contents.append({
+                "role": role,
+                "parts": [{"text": content}]
             })
 
-    return JsonResponse({"success": False, "message": "Invalid request"})
+        # Add the latest message after the previous history.
+        contents.append({
+            "role": "user",
+            "parts": [{"text": user_message}]
+        })
+
+        client = genai.Client(api_key=api_key)
+
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=contents,
+            config=types.GenerateContentConfig(
+                system_instruction=DEVEXIFY_SYSTEM_PROMPT,
+                max_output_tokens=800,
+            ),
+        )
+
+        answer = response.text
+
+        if not answer or not answer.strip():
+            logger.error("Gemini returned an empty response.")
+            return JsonResponse({
+                "success": False,
+                "message": "Dex could not generate a reply. Please try again."
+            }, status=502)
+
+        return JsonResponse({
+            "success": True,
+            "message": answer.strip()
+        })
+
+    except json.JSONDecodeError:
+        return JsonResponse({
+            "success": False,
+            "message": "Invalid chat request."
+        }, status=400)
+
+    except Exception:
+        logger.exception("Dex AI request failed.")
+        return JsonResponse({
+            "success": False,
+            "message": (
+                "Dex is temporarily unavailable. "
+                "Please try again shortly."
+            )
+        }, status=502)
