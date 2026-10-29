@@ -1,0 +1,242 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$QFHYkvio9skjYoBM8sGNxK$7VVoMTcjrQl92iXQnb1imsG7yn4MWqq4m58Mfh9+wcw=",
+      "last_login": "2026-06-29T04:45:37.149Z",
+      "is_superuser": true,
+      "username": "Ammar",
+      "first_name": "",
+      "last_name": "",
+      "email": "cuteboy0327@gmail.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2026-06-28T06:55:20.616Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$Wc9WQIsKYb4f2kPofc4DHD$Q0t970Llvob5WLCC3dEuudda3Y6EU7QrQ3AFlp0PRTw=",
+      "last_login": "2026-06-29T04:30:21.333Z",
+      "is_superuser": false,
+      "username": "Ayesha",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-06-29T04:18:59.537Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$V80wWmEDTP0seezqrcLnqD$d27Su4sUpkPp4Gp6gI7fa88t4RthUcZakS3EoGj/31k=",
+      "last_login": "2026-06-29T04:50:44.805Z",
+      "is_superuser": false,
+      "username": "Haziqtahir",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-06-29T04:47:25.737Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$8C1Z7721a17j73j6Ep8UVZ$x07V1ro6QpheiPnOmzi+uiShBPe3eIQ6PyUbDJX9RYA=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "cuteboy0327",
+      "first_name": "Haziq",
+      "last_name": "",
+      "email": "cuteboy0327@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-06-29T04:57:27Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$6taBdFLNuyrH63r3QqNp8D$4Igb82QD+wMNP6Xf6Df9MZHLkB5u2SWuYJ8gSfpD/QA=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "cuteboy03271",
+      "first_name": "Haziq",
+      "last_name": "",
+      "email": "cuteboy0327@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-06-29T05:01:09.064Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 6,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$gcPI0zYpRolgNicjvPmAzu$HOUjEZjbPNeWVWkex+lR61xcrGVOpEZ97FwN7zAy0Fo=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "cuteboy03272",
+      "first_name": "Haziq",
+      "last_name": "",
+      "email": "cuteboy0327@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-06-29T05:07:51.211Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 7,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$G1jfg1JHL96sL0Jzxw3pYr$/Gn0QHzLpW70fPiANu7JXnTcKWByTQDVmL68ySbBMF0=",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "ammar",
+      "first_name": "",
+      "last_name": "",
+      "email": "cuteoy0327@gmail.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2026-06-29T09:50:49.213Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 8,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$YUGsl04mPTWJWoRjAKTdBd$EAXpzHEP5m3ub62EwqrjWvoZSjFsSYuf3n44vo0N9FE=",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "de",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2026-06-29T09:52:30.299Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 9,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$J8BDutKxTjAvkMuMklsBAd$GwsMJxqunwlXlrD52iNt3MlNG4x29x1gCW6F9GkRQzY=",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "lap",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2026-06-29T10:05:32.159Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "devexify.admission",
+    "pk": 6,
+    "fields": {
+      "full_name": "Haziq",
+      "father_name": "Tahir",
+      "email": "cuteboy0327@gmail.com",
+      "phone": "0333333333",
+      "whatsapp": "0323323232",
+      "city": "Chiniot",
+      "course": "Social Media Marketing",
+      "registration_type": "Course Admission",
+      "payment_method": "JazzCash",
+      "payment_screenshot": "payment_screenshots/haziq.png",
+      "message": "",
+      "transaction_id": null,
+      "status": "Approved",
+      "created_at": "2026-06-29T04:56:56.046Z",
+      "student": 5
+    }
+  },
+  {
+    "model": "devexify.studentprofile",
+    "pk": 3,
+    "fields": {
+      "user": 4,
+      "full_name": "Haziq",
+      "father_name": "Tahir",
+      "phone": "0333333333",
+      "city": "Chiniot",
+      "profile_pic": "",
+      "bio": null,
+      "course": "Social Media Marketing",
+      "batch": "Batch 2026",
+      "enrolled_on": "2026-06-29",
+      "progress": 0,
+      "is_active": true,
+      "certificate": ""
+    }
+  },
+  {
+    "model": "devexify.studentprofile",
+    "pk": 4,
+    "fields": {
+      "user": 5,
+      "full_name": "Haziq",
+      "father_name": "Tahir",
+      "phone": "0333333333",
+      "city": "Chiniot",
+      "profile_pic": "",
+      "bio": null,
+      "course": "Social Media Marketing",
+      "batch": "Batch 2026",
+      "enrolled_on": "2026-06-29",
+      "progress": 0,
+      "is_active": true,
+      "certificate": ""
+    }
+  },
+  {
+    "model": "devexify.studentprofile",
+    "pk": 5,
+    "fields": {
+      "user": 6,
+      "full_name": "Haziq",
+      "father_name": "Tahir",
+      "phone": "0333333333",
+      "city": "Chiniot",
+      "profile_pic": "",
+      "bio": null,
+      "course": "Social Media Marketing",
+      "batch": "Batch 2026",
+      "enrolled_on": "2026-06-29",
+      "progress": 0,
+      "is_active": true,
+      "certificate": ""
+    }
+  }
+]
