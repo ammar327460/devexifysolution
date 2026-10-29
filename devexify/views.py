@@ -336,7 +336,7 @@ def ai_agent(request):
         client = genai.Client(api_key=api_key)
 
         response = client.models.generate_content(
-            model="gemini-2.5-flash",
+    model="gemini-3.8-flash",
             contents=contents,
             config=types.GenerateContentConfig(
                 system_instruction=DEVEXIFY_SYSTEM_PROMPT,
